@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RNGManager", "RNGManager.csproj", "{B1545479-8CEF-431D-81EC-7940D976DC99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RNGManager.Test", "..\RNGManager.Test\RNGManager.Test.csproj", "{BFDB412A-B578-4A00-84E7-D69EC4A588D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1545479-8CEF-431D-81EC-7940D976DC99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1545479-8CEF-431D-81EC-7940D976DC99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1545479-8CEF-431D-81EC-7940D976DC99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1545479-8CEF-431D-81EC-7940D976DC99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFDB412A-B578-4A00-84E7-D69EC4A588D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFDB412A-B578-4A00-84E7-D69EC4A588D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFDB412A-B578-4A00-84E7-D69EC4A588D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFDB412A-B578-4A00-84E7-D69EC4A588D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53BC699D-1264-4FB4-B6F2-543AD365CB54}
+	EndGlobalSection
+EndGlobal

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace RNGManager
 {
@@ -9,6 +11,11 @@ namespace RNGManager
         public string Title { get; private set; }
         public int Seed { get; private set; }
 
+        /// <summary>
+        /// Creates a new RNG instance. You can supply a seed and/or a title.
+        /// </summary>
+        /// <param name="seed">Seed of the instance.</param>
+        /// <param name="title">Title of the instance.</param>
         public RNGInstance(int? seed = null, string title = "")
         {
             Seed = seed.HasValue ? seed.Value : Guid.NewGuid().GetHashCode();
@@ -30,14 +37,77 @@ namespace RNGManager
         }
 
         /// <summary>
-        /// Returns a random float. You can specify minimum and maximum values. Minimum is inclusive, maximum is not.
+        /// Returns a random float. Minimum is inclusive 0, maximum is noninclusive 1.
+        /// </summary>
+        /// <param name="max">The returned value will be lower than this maximum.</param>
+        /// <returns></returns>
+        public float NextFloat()
+        {
+            return Convert.ToSingle(random.NextDouble());
+        }
+
+        /// <summary>
+        /// Returns a random float. Minimum is inclusive 0, maximum is noninclusive.
+        /// </summary>
+        /// <param name="max">The returned value will be lower than this maximum.</param>
+        /// <returns></returns>
+        public float NextFloat(float max)
+        {
+            return Convert.ToSingle(random.NextDouble()) * max;
+        }
+
+        /// <summary>
+        /// Returns a random float. Minimum is inclusive, maximum is not.
         /// </summary>
         /// <param name="min">The returned value will be greater or equal than this minimum.</param>
         /// <param name="max">The returned value will be lower than this maximum.</param>
         /// <returns></returns>
-        public float NextFloat(float min = 0, float max = 1f)
+        public float NextFloat(float min, float max)
         {
             return Convert.ToSingle(random.NextDouble()) * (max - min) + min;
+        }
+
+        /// <summary>
+        /// Returns a random integer. Minimum is inclusive 0, maximum is noninclusive.
+        /// </summary>
+        /// <param name="max">The returned value will be lower than this maximum.</param>
+        /// <returns></returns>
+        public int NextInt(int max)
+        {
+            return random.Next(max);
+        }
+
+        /// <summary>
+        /// Returns a random integer. Minimum is inclusive, maximum is noninclusive.
+        /// </summary>
+        /// /// <param name="min">The returned value will be greater or equal than this minimum.</param>
+        /// <param name="max">The returned value will be lower than this maximum.</param>
+        /// <returns></returns>
+        public int NextInt(int min, int max)
+        {
+            return random.Next(min, max);
+        }
+
+        /// <summary>
+        /// Returns a random value from an enum.
+        /// </summary>
+        /// <typeparam name="T">Enum containing the random value from.</typeparam>
+        /// <returns></returns>
+        public T NextEnumValue<T>() where T : Enum
+        {
+            Array values = Enum.GetValues(typeof(T));
+            return (T)values.GetValue(random.Next(values.Length));
+        }
+
+        /// <summary>
+        /// Returns a random element from a collection.
+        /// </summary>
+        /// <typeparam name="T">Type of the element.</typeparam>
+        /// <param name="elements">The source collection.</param>
+        /// <returns></returns>
+        public T NextElement<T>(IEnumerable<T> elements)
+        {
+            return elements.ElementAt(NextInt(elements.Count()));
         }
     }
 }

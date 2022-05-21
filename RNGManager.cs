@@ -11,14 +11,14 @@ namespace RNGManager
             rngInstances = new Dictionary<string, RNGInstance>();
         }
 
-        private static RNGManager main;
-        public static RNGManager Main
+        private static RNGManager manager;
+        public static RNGManager Manager
         {
             get
             {
-                if (main == null)
-                    main = new RNGManager();
-                return main;
+                if (manager == null)
+                    manager = new RNGManager();
+                return manager;
             }
         }
 
@@ -63,7 +63,9 @@ namespace RNGManager
         /// <param name="instance">The RNG instance to be added.</param>
         public RNGInstance AddInstance(RNGInstance instance)
         {
-            rngInstances.Add(instance.Title, instance);
+            if(!rngInstances.ContainsKey(instance.Title))
+                rngInstances.Add(instance.Title, instance);
+            
             return this[instance.Title];
         }
     }
